@@ -1,4 +1,4 @@
-# GuitarLA - Tienda de Guitarras Online
+# Tienda de Guitarras Online
 
 Este proyecto es una tienda de guitarras desarrollada con **React** y **Vite**. Permite visualizar una colección de guitarras, agregar productos al carrito y simular el proceso de compra.
 
