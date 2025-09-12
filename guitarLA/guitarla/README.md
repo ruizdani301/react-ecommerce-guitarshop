@@ -1,12 +1,67 @@
-# React + Vite
+# GuitarLA - Tienda de Guitarras Online
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una tienda de guitarras desarrollada con **React** y **Vite**. Permite visualizar una colección de guitarras, agregar productos al carrito y simular el proceso de compra.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Listado de guitarras con imágenes, descripción y precio.
+- Carrito de compras interactivo.
+- Estilos personalizados y responsive.
+- Estructura modular con componentes reutilizables.
 
-## Expanding the ESLint configuration
+## Estructura del Proyecto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+guitarLA/
+  guitarla/
+    src/
+      components/    # Componentes React
+      data/          # Datos de guitarras
+      assets/        # Imágenes y recursos
+      App.jsx        # Componente principal
+      main.jsx       # Punto de entrada
+      index.css      # Estilos globales
+    public/          # Imágenes públicas
+    package.json     # Dependencias y scripts
+    vite.config.js   # Configuración Vite
+    README.md        # Documentación
+```
+
+## Instalación
+
+1. Clona el repositorio:
+   ```sh
+   git clone <url-del-repositorio>
+   cd guitarLA/guitarla
+   ```
+
+2. Instala las dependencias:
+   ```sh
+   npm install
+   ```
+
+3. Inicia el servidor de desarrollo:
+   ```sh
+   npm run dev
+   ```
+
+## Scripts Disponibles
+
+- `npm run dev` - Inicia el servidor de desarrollo.
+- `npm run build` - Compila la aplicación para producción.
+- `npm run preview` - Previsualiza la versión de producción.
+- `npm run lint` - Ejecuta ESLint para análisis de código.
+
+## Tecnologías Utilizadas
+
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [ESLint](https://eslint.org/)
+
+## Créditos
+
+Desarrollado por [Tu Nombre].
+
+---
+
+¡Personaliza este README según tus necesidades!
