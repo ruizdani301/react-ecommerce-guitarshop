@@ -1,5 +1,5 @@
 function Header(props) {
-    const { cart } = props;
+    const { cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart } = props;
     const cartTotal = () => cart.reduce((total, item) => total + (item.quantity * item.price), 0)
  
     return (
@@ -47,13 +47,15 @@ function Header(props) {
                                             <button
                                                 type="button"
                                                 className="btn btn-dark"
+                                                onClick={() => decreaseQuantity(item.id)}
                                             >
                                                 -
                                             </button>
-                                                1
+                                                {item.quantity}
                                             <button
                                                 type="button"
                                                 className="btn btn-dark"
+                                                onClick={() => increaseQuantity(item.id)}
                                             >
                                                 +
                                             </button>
@@ -62,6 +64,7 @@ function Header(props) {
                                             <button
                                                 className="btn btn-danger"
                                                 type="button"
+                                                onClick={() => removeFromCart(item.id)}
                                             >
                                                 X
                                             </button>
@@ -75,7 +78,7 @@ function Header(props) {
                             )}
 
                            
-                            <button className="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
+                            <button className="btn btn-dark w-100 mt-3 p-2" onClick={clearCart}>Vaciar Carrito</button>
                         </div>
                     </div>
                 </nav>

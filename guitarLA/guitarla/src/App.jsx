@@ -7,10 +7,13 @@ import './App.css'
  function App() {
   const [data, setData] = useState(db)
   const [cart, setCart] = useState([])
+  const MAX_QUANTITY = 5;
+  const MIN_QUANTITY = 1;
 
   function addToCart(item) {
     const itemExists = cart.findIndex((cartItem) => cartItem.id === item.id);
     if (itemExists >= 0) {
+      if (cart[itemExists].quantity >= MAX_QUANTITY) {return}
       // Si el item ya existe en el carrito, actualiza la cantidad
       // debo hacer esto porque el estado no lo puedo modificar en si mismo
       // debo crear una copia y modificarla ...cart realiza una copia
@@ -22,11 +25,49 @@ import './App.css'
       item.quantity = 1;
       setCart([...cart, item]);
     }}
-  
+  function removeFromCart(guitar_id) {
+    // al pasar una funcion a un set internammente react pasa
+    // el valor del estado como parametro de esa funcion
+    // crea un array nuevo sin el item que quiero eliminar
+    // se usa filter porq no modifica el array original sino q crea uno nuevo
+    setCart(oldValue => oldValue.filter(item => item.id !== guitar_id));
+  }
+  function increaseQuantity(guitar_id) {
+    const updatedCart = cart.map(item => {
+      if (item.id === guitar_id && item.quantity < MAX_QUANTITY) {
+        return { ...item,
+                quantity: item.quantity + 1
+              };
+      }
+      return item;
+    });
+    setCart(updatedCart);
+  }
+  function decreaseQuantity(guitar_id) {
+    const updatedCart = cart.map(item => {
+      if (item.id === guitar_id && item.quantity > MIN_QUANTITY) {
+        return { ...item,
+                quantity: item.quantity - 1
+              };
+      }
+      return item;
+    });
+    setCart(updatedCart);
+  }
+  function clearCart() {
+    setCart([]);
+  }
+
+ 
   return (
     <>
      
-    <Header cart={cart}/>
+    <Header cart={cart}
+            removeFromCart={removeFromCart}
+            increaseQuantity={increaseQuantity}
+            decreaseQuantity={decreaseQuantity}
+            clearCart={clearCart}
+    />
     <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>
 
@@ -36,7 +77,8 @@ import './App.css'
             key={guitar.id}
             guitar={guitar}
             setCart={setCart}
-            addToCart={addToCart} />
+            addToCart={addToCart}
+             />
           ))}
    
         </div>
